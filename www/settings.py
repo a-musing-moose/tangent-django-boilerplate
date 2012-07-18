@@ -33,10 +33,11 @@ if 'DISABLED_APPS' in locals():
     for x, m in enumerate(TEMPLATE_CONTEXT_PROCESSORS):
         if m.startswith(a):
             TEMPLATE_CONTEXT_PROCESSORS.pop(x)
-    DATABASE_ROUTERS = list(DATABASE_ROUTERS)
-    for x, m in enumerate(DATABASE_ROUTERS):
-        if m.startswith(a):
-            DATABASE_ROUTERS.pop(x)
+    if 'DATABASE_ROUTERS' in locals():
+        DATABASE_ROUTERS = list(DATABASE_ROUTERS)
+        for x, m in enumerate(DATABASE_ROUTERS):
+            if m.startswith(a):
+                DATABASE_ROUTERS.pop(x)
 
 # Keep version number here - this is generally overwritten as
 # part of deployment to be the build name
